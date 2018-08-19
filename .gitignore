@@ -3,3 +3,5 @@
 *.terraform
 *.terraform.d
 *.pem
+
+*.DS_Store
