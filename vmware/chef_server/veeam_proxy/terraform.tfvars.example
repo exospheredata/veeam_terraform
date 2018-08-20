@@ -17,17 +17,8 @@ vsphere_resource_pool  = ""
 # vSphere Virtual Machine Network to which the systems will be attached.
 vsphere_network_name   = ""
 
-# vSphere Full Template Path from which the systems will be deployed.  Must include any vSphere folder names e.g Templates/windows_2016
-veeam_template_path    = ""
-
-# Total number of vCPUs to assign to Veeam VBR Server
-vbr_cpu_count          =  2
-
-# Total amount of memory (MB) to assign to Veeam VBR Server
-vbr_memory_size_mb     = 4096
-
-# [Optional] vSphere Full Template Path from which the Proxy systems will be deployed.  If empty or 'same' then the variable veeam_template_path will be used.
-proxy_template_path    = "same"
+# vSphere Full Template Path from which the Proxy systems will be deployed.
+proxy_template_path    = ""
 
 # Total number of vCPUs to assign to Veeam Proxy Server
 proxy_cpu_count        = 2
@@ -41,6 +32,9 @@ should_register_proxy  = true
 
 # vSphere Folder to which the systems will be deployed.  Must exist prior to execution.
 veeam_deployment_folder= ""
+
+# Veeam VBR Server Address.  Must exist prior to execution.
+vbr_server_address     = ""
 
 # Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format.
 admin_user             = ""
@@ -56,9 +50,6 @@ proxy_admin_password   = ""
 
 # FQDN domain name
 domain_name            = ""
-
-# Enter the hostname to give to the Veeam Backup and Replication Server.  Should be less than 16 characters.
-veeam_server_name      = "veeam"
 
 # Enter the hostname prefix to give to the Veeam Proxy Server.  Must be less than 12 characters as proxies will receive a 3 digit identifier at the end of their name.
 veeam_proxy_name       = "proxy"

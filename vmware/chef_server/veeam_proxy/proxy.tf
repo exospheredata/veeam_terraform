@@ -89,7 +89,7 @@ resource "null_resource" "install_chef_proxy" {
             "keep_media": true
           },
           "proxy": {
-            "vbr_server": "${vsphere_virtual_machine.vbr_server.default_ip_address}",
+            "vbr_server": "${var.vbr_server_address}",
             "vbr_username": "${var.admin_user}",
             "vbr_password": "${var.admin_password}",
             "proxy_username": "${var.proxy_admin_user}",
@@ -137,8 +137,7 @@ resource "null_resource" "bootstrap_proxy" {
   }
 
   depends_on = [
-    "null_resource.install_chef_proxy",
-    "null_resource.bootstrap_vbr_server"
+    "null_resource.install_chef_proxy"
   ]
 
   connection {
@@ -163,7 +162,7 @@ resource "null_resource" "bootstrap_proxy" {
             "keep_media": true
           },
           "proxy": {
-            "vbr_server": "${vsphere_virtual_machine.vbr_server.default_ip_address}",
+            "vbr_server": "${var.vbr_server_address}",
             "vbr_username": "${var.admin_user}",
             "vbr_password": "${var.admin_password}",
             "proxy_username": "${var.proxy_admin_user}",

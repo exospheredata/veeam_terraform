@@ -29,23 +29,6 @@ variable "vsphere_network_name" {
   description = "vSphere Virtual Machine Network to which the systems will be attached."
 }
 
-variable "veeam_template_path" {
-  type        = "string"
-  description = "vSphere Full Template Path from which the systems will be deployed.  Must include any vSphere folder names e.g Templates/windows_2016"
-}
-
-variable "vbr_cpu_count" {
-  type        = "string"
-  description = "Total number of vCPUs to assign to Veeam VBR Server"
-  default     = 2
-}
-
-variable "vbr_memory_size_mb" {
-  type        = "string"
-  description = "Total amount of memory (MB) to assign to Veeam VBR Server"
-  default     = 4096
-}
-
 variable "proxy_template_path" {
   type        = "string"
   description = "[Optional] vSphere Full Template Path from which the Proxy systems will be deployed.  If empty or 'same' then the variable veeam_template_path will be used."
@@ -75,6 +58,11 @@ variable "veeam_deployment_folder" {
   description = "vSphere Folder to which the systems will be deployed.  Must exist prior to execution."
 }
 
+variable "vbr_server_address" {
+  type        = "string"
+  description = "Veeam VBR Server Address.  Must exist prior to execution."
+}
+
 variable "admin_user" {
   type        = "string"
   description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format."
@@ -98,12 +86,6 @@ variable "proxy_admin_password" {
 variable "domain_name" {
   type        = "string"
   description = "FQDN domain name"
-}
-
-variable "veeam_server_name" {
-  type        = "string"
-  description = "Enter the hostname to give to the Veeam Backup and Replication Server.  Should be less than 16 characters."
-  default     = "veeam"
 }
 
 variable "veeam_proxy_name" {
