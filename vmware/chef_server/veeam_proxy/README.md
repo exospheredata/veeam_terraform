@@ -1,5 +1,5 @@
 # Basic Deployment of Veeam Proxy Servers on VMware
-This set of templates will deploy Veeam VMware Proxy Servers.
+This set of templates will deploy one or more Veeam VMware Proxy Servers on VMware using Chef Server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -107,5 +107,23 @@ Below is a list of different command options when executing Terraform.
 | `terraform apply -var proxy_count=1 -var should_register_proxy=false` | This command will build the Veeam VBR server and deploy one Proxy Server but not register the proxy to VBR. | This command is handy for staging a new Proxy Server template.  By deploying in this manner:<ol><li>you can prestage the installation of the Veeam components</li><li>shutdown the machine</li><li>clone to a new template</li><li>then power on the machine</li><li>finally, run the process again using `terraform apply -var proxy_count=0` to delete the proxy cleanly</li></ol>|
 
 
+## License and Author
+
+_Note: This repository is not officially supported by or released by Veeam Software, Inc._
+
+- Author:: Exosphere Data, LLC ([chef@exospheredata.com](mailto:chef@exospheredata.com))
+
+```text
+Copyright 2018 Exosphere Data, LLC
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+except in compliance with the License. You may obtain a copy of the License at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+either express or implied. See the License for the specific language governing permissions
+and limitations under the License.
+```
 
 
