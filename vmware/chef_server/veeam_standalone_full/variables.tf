@@ -66,7 +66,7 @@ variable "proxy_memory_size_mb" {
 
 variable "should_register_proxy" {
   type        = "string"
-  description = "Should the Veeam Proxy Server be registered to the Veeam VBR Server."
+  description = "Should the Veeam Proxy Server be registered to the Veeam VBR Server. If false then the proxy server will not register.  This is handy for creating fast launch templates."
   default     = "true"
 }
 
@@ -75,19 +75,19 @@ variable "veeam_deployment_folder" {
   description = "vSphere Folder to which the systems will be deployed.  Must exist prior to execution."
 }
 
-variable "admin_user" {
+variable "vbr_admin_user" {
   type        = "string"
-  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format."
+  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or username (for local accounts) format."
 }
 
-variable "admin_password" {
+variable "vbr_admin_password" {
   type        = "string"
   description = "Password for Remote Windows Management Connections"
 }
 
 variable "proxy_admin_user" {
   type        = "string"
-  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format."
+  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or username (for local accounts) format."
 }
 
 variable "proxy_admin_password" {

@@ -63,19 +63,19 @@ variable "vbr_server_address" {
   description = "Veeam VBR Server Address.  Must exist prior to execution."
 }
 
-variable "admin_user" {
+variable "vbr_admin_user" {
   type        = "string"
-  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format."
+  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or username (for local accounts) format."
 }
 
-variable "admin_password" {
+variable "vbr_admin_password" {
   type        = "string"
   description = "Password for Remote Windows Management Connections"
 }
 
 variable "proxy_admin_user" {
   type        = "string"
-  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format."
+  description = "Username for Remote Windows Management Connections.  Must be in Domain\\username or username (for local accounts)  format."
 }
 
 variable "proxy_admin_password" {

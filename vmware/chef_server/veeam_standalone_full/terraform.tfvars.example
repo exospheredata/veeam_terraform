@@ -42,13 +42,13 @@ should_register_proxy  = true
 # vSphere Folder to which the systems will be deployed.  Must exist prior to execution.
 veeam_deployment_folder= ""
 
-# Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format.
-admin_user             = ""
+# Username for Remote Windows Management Connections.  Must be in Domain\\username or username (for local accounts) format.
+vbr_admin_user             = ""
 
 # Password for Remote Windows Management Connections
-admin_password         = ""
+vbr_admin_password         = ""
 
-# Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format.
+# Username for Remote Windows Management Connections.  Must be in Domain\\username or username (for local accounts) format.
 proxy_admin_user       = ""
 
 # Password for Remote Windows Management Connections

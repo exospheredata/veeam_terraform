@@ -53,11 +53,11 @@ resource "null_resource" "install_chef_vbr_server" {
   ]
 
   connection {
-    host = "${vsphere_virtual_machine.vbr_server.guest_ip_addresses.0}"
-    type = "winrm"
-    user = "${var.admin_user}"
-    password = "${var.admin_password}"
-    timeout = "20m"
+    host      = "${vsphere_virtual_machine.vbr_server.guest_ip_addresses.0}"
+    type      = "winrm"
+    user      = "${var.vbr_admin_user}"
+    password  = "${var.vbr_admin_password}"
+    timeout   = "20m"
   }
 
   provisioner "chef" {
@@ -103,8 +103,8 @@ resource "null_resource" "bootstrap_vbr_server" {
   connection {
     host      = "${vsphere_virtual_machine.vbr_server.guest_ip_addresses.0}"
     type      = "winrm"
-    user      = "${var.admin_user}"
-    password  = "${var.admin_password}"
+    user      = "${var.vbr_admin_user}"
+    password  = "${var.vbr_admin_password}"
     timeout   = "20m"
   }
 

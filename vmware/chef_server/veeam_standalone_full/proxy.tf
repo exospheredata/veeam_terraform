@@ -55,8 +55,8 @@ resource "null_resource" "install_chef_proxy" {
   connection {
     host      = "${element(vsphere_virtual_machine.proxy.*.guest_ip_addresses.0, count.index)}"
     type      = "winrm"
-    user      = "${var.admin_user}"
-    password  = "${var.admin_password}"
+    user      = "${var.proxy_admin_user}"
+    password  = "${var.proxy_admin_password}"
     timeout   = "20m"
   }
 
@@ -90,8 +90,8 @@ resource "null_resource" "install_chef_proxy" {
           },
           "proxy": {
             "vbr_server": "${vsphere_virtual_machine.vbr_server.default_ip_address}",
-            "vbr_username": "${var.admin_user}",
-            "vbr_password": "${var.admin_password}",
+            "vbr_username": "${var.vbr_admin_user}",
+            "vbr_password": "${var.vbr_admin_password}",
             "proxy_username": "${var.proxy_admin_user}",
             "proxy_password": "${var.proxy_admin_password}",
             "use_ip_address": true
@@ -133,7 +133,8 @@ resource "null_resource" "install_chef_proxy" {
 resource "null_resource" "bootstrap_proxy" {
   count            = "${var.proxy_count}"
   triggers {
-    instance_id = "${vsphere_virtual_machine.proxy.*.id[count.index]}"
+    instance_id = "${vsphere_virtual_machine.proxy.*.id[count.index]}",
+    should_register_proxy = "${var.should_register_proxy}"
   }
 
   depends_on = [
@@ -144,8 +145,8 @@ resource "null_resource" "bootstrap_proxy" {
   connection {
     host      = "${element(vsphere_virtual_machine.proxy.*.guest_ip_addresses.0, count.index)}"
     type      = "winrm"
-    user      = "${var.admin_user}"
-    password  = "${var.admin_password}"
+    user      = "${var.proxy_admin_user}"
+    password  = "${var.proxy_admin_password}"
     timeout   = "20m"
   }
 
@@ -164,8 +165,8 @@ resource "null_resource" "bootstrap_proxy" {
           },
           "proxy": {
             "vbr_server": "${vsphere_virtual_machine.vbr_server.default_ip_address}",
-            "vbr_username": "${var.admin_user}",
-            "vbr_password": "${var.admin_password}",
+            "vbr_username": "${var.vbr_admin_user}",
+            "vbr_password": "${var.vbr_admin_password}",
             "proxy_username": "${var.proxy_admin_user}",
             "proxy_password": "${var.proxy_admin_password}",
             "use_ip_address": true,
