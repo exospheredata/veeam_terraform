@@ -7,6 +7,8 @@ This Repository contains example Terraform templaes for use with the Veeam Chef 
 | --- | --- | --- | --- |
 | [veeam_standalone_full](vmware/chef_server/veeam_standalone_full) | VMware | X | This set of templates will deploy Veeam Backup and Replication server in a complete deployment along with an optional number of Veeam VMware Proxies on VMware using Chef Server. |
 | [veeam_proxy](vmware/chef_server/veeam_proxy) | VMware | X | This set of templates will deploy one or more Veeam VMware Proxy Servers on VMware using Chef Server. |
+| [no_chef_server:veeam_standalone_full](vmware/no_chef_server/veeam_standalone_full) | VMware |  | This set of templates will deploy Veeam Backup and Replication server in a complete deployment along with an optional number of Veeam VMware Proxies on VMware using Chef-Solo mode with the Chef Client. |
+| [no_chef_server:veeam_proxy](vmware/no_chef_server/veeam_proxy) | VMware |  | This set of templates will deploy one or more Veeam VMware Proxy Servers on VMware using Chef-Solo mode with the Chef Client. |
 
 ## Contribute
  - Fork it
