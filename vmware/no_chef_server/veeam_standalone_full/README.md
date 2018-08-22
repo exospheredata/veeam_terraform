@@ -1,5 +1,5 @@
-# Basic Deployment of Veeam Proxy Servers on VMware
-This set of templates will deploy one or more Veeam VMware Proxy Servers on VMware using Chef-Solo mode with the Chef Client.
+# Basic Deployment of Veeam on VMware
+This set of templates will deploy Veeam Backup and Replication server in a complete deployment along with an optional number of Veeam VMware Proxies on VMware using Chef-Solo mode with the Chef Client.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -49,22 +49,25 @@ The Terraform templates included in this repository requires Terraform to be ava
 | `datacenter` | String | vSphere Datacenter Name to which the systems will be deployed. | | X |
 | `vsphere_resource_pool` | String | vSphere Cluster or Resource Pool to which the systems will be deployed. | | X |
 | `vsphere_network_name` | String | vSphere Virtual Machine Network to which the systems will be attached. | | X |
+| `veeam_template_path` | String | vSphere Full Template Path from which the systems will be deployed.  Must include any vSphere folder names e.g Templates/windows_2016 | | X |
 
 ### Veeam Server Variables
 
 | Name | Type | Description | Default Value | Mandatory |
 | --- | --- | --- | --- | --- |
+| `vbr_cpu_count` | String | Total number of vCPUs to assign to Veeam VBR Server | 2 | X |
+| `vbr_memory_size_mb` | String | Total amount of memory (MB) to assign to Veeam VBR Server | 4096 | X |
 | `proxy_template_path` | String | Optional] vSphere Full Template Path from which the Proxy systems will be deployed.  If empty or 'same' then the variable veeam_template_path will be used. | "same" | X |
 | `proxy_cpu_count` | String | Total number of vCPUs to assign to Veeam Proxy Server | 2 | X |
 | `proxy_memory_size_mb` | String | Total amount of memory (MB) to assign to Veeam Proxy Server. | 2048 | X |
 | `should_register_proxy` | String | Should the Veeam Proxy Server be registered to the Veeam VBR Server. | "true" | X |
 | `veeam_deployment_folder` | String | vSphere Folder to which the systems will be deployed.  Must exist prior to execution. | | X |
-| `vbr_server_address` | String | Veeam VBR Server Address.  Must exist prior to execution. | | X |
 | `admin_user` | String | Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format. | | X |
 | `admin_password` | String | Password for Remote Windows Management Connections | | X |
 | `proxy_admin_user` | String | Username for Remote Windows Management Connections.  Must be in Domain\\username or .\\username format. | | X |
 | `proxy_admin_password` | String | Password for Remote Windows Management Connections | | X |
 | `domain_name` | String | FQDN domain name | | X |
+| `veeam_server_name` | String | Enter the hostname to give to the Veeam Backup and Replication Server.  Should be less than 16 characters. | "veeam" | X |
 | `veeam_proxy_name` | String | Enter the hostname prefix to give to the Veeam Proxy Server.  Must be less than 12 characters as proxies will receive a 3 digit identifier at the end of their name. | "proxy" | X |
 | `proxy_count` | String | Number of Proxy Servers to create.  Zero will remove all proxies created by this Terraform State | 0 | X |
 
@@ -99,7 +102,6 @@ Below is a list of different command options when executing Terraform.
 | `terraform destroy` | Reverses the entire configuration and destroys the infrastructure. If the `-force` switch is added, then it will bypass the *Should proceed?* question. | **WARNING**: This will delete everything in your environment based on the templates.  If you only want to remove the proxies, then you can simply set the `proxy_count` variable as mentioned previously. |
 | `terraform apply -var proxy_count=1 -var should_register_proxy=false` | This command will build the Veeam VBR server and deploy one Proxy Server but not register the proxy to VBR. | This command is handy for staging a new Proxy Server template.  By deploying in this manner:<ol><li>you can prestage the installation of the Veeam components</li><li>shutdown the machine</li><li>clone to a new template</li><li>then power on the proxy server</li><li>finally, run the process again using `terraform apply -var proxy_count=0` to delete the proxy cleanly</li></ol>|
 
-
 ## License and Author
 
 _Note: This repository is not officially supported by or released by Veeam Software, Inc._
@@ -118,5 +120,6 @@ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF 
 either express or implied. See the License for the specific language governing permissions
 and limitations under the License.
 ```
+
 
 
