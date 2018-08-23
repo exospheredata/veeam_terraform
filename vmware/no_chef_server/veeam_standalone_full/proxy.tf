@@ -232,7 +232,7 @@ resource "null_resource" "bootstrap_proxy" {
   # =>
   provisioner "remote-exec" {
     inline = [
-      "powershell.exe -Command \"C:\\tmp\\chef-bootstrap.ps1\""
+      "powershell.exe -File \"C:\\tmp\\chef-bootstrap.ps1\""
     ]
   }
 }

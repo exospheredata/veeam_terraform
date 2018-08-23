@@ -19,7 +19,7 @@ try {
     Remove-Item -Recurse -Confirm:$False C:\tmp\chef_cookbooks
   }
   Write-Host "`tSetup the repositories"
-  New-Item -Type Directory C:\tmp\chef\ | Out-Null
+  New-Item -Type Directory C:\tmp\chef\data_bags\veeam | Out-Null
   Write-Host "`tSetup the cookbook repositories"
   New-Item -Type Directory C:\tmp\chef_cookbooks | Out-Null
 }

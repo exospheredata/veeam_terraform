@@ -133,7 +133,10 @@ variable "veeam_installation_checksum" {
   default     = "9a6fa7d857396c058b2e65f20968de56f96bc293e0e8fd9f1a848c7d71534134"
 }
 
-
+variable "license_base64_encoded" {
+  type        = "string"
+  description = "Base64 Encoded License File"
+}
 
 
 
