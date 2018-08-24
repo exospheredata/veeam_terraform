@@ -125,14 +125,33 @@ resource "null_resource" "bootstrap_vbr_server" {
           },
           "console": {
             "accept_eula": true
+          },
+          "host": {
+            "vbr_server": "${vsphere_virtual_machine.vbr_server.default_ip_address}",
+            "vbr_username": "${var.vbr_admin_user}",
+            "vbr_password": "${var.vbr_admin_password}",
+            "host_username": "${var.vsphere_user}",
+            "host_password": "${var.vsphere_password}",
+            "type": "vmware",
+            "server": "${var.vsphere_server}"
           }
         },
         "run_list": [
-          "recipe[veeam::standalone_complete]"
+          "recipe[veeam::standalone_complete]",
+          "recipe[veeam::host_mgmt]"
         ]
       }
     EOF
     destination = "C:\\tmp\\chef\\dna.json"
+  }
+  provisioner "file" {
+    content     = <<-EOF
+      {
+        "id": "license",
+        "license": "${var.license_base64_encoded}"
+      }
+    EOF
+    destination = "C:\\tmp\\chef\\data_bags\\veeam\\license.json"
   }
   provisioner "file" {
     source      = "${path.module}/scripts/bootstrap.ps1"
@@ -144,7 +163,7 @@ resource "null_resource" "bootstrap_vbr_server" {
   # =>
   provisioner "remote-exec" {
     inline = [
-      "powershell.exe -Command \"C:\\tmp\\chef-bootstrap.ps1\""
+      "powershell.exe -File \"C:\\tmp\\chef-bootstrap.ps1\""
     ]
   }
 }
