@@ -1,5 +1,5 @@
 # Terraform Examples for deploying Veeam
-This Repository contains example Terraform templaes for use with the Veeam Chef cookbook to deploy infrastructure required to support Veeam Environments.
+This Repository contains example Terraform templates for use with the Veeam Chef cookbook to deploy infrastructure required to support Veeam Environments.
 
 
 ## Terraform Templates
