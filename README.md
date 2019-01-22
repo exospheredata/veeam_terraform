@@ -10,6 +10,12 @@ This Repository contains example Terraform templates for use with the Veeam Chef
 | [no_chef_server:veeam_standalone_full](vmware/no_chef_server/veeam_standalone_full) | VMware |  | This set of templates will deploy Veeam Backup and Replication server in a complete deployment along with an optional number of Veeam VMware Proxies on VMware using Chef-Solo mode with the Chef Client. |
 | [no_chef_server:veeam_proxy](vmware/no_chef_server/veeam_proxy) | VMware |  | This set of templates will deploy one or more Veeam VMware Proxy Servers on VMware using Chef-Solo mode with the Chef Client. |
 
+## Access Denied Errors with Terraform
+These Terraform templates will attempt to communicate directly to the deployed machines via WinRM using the Basic Authentication method.  The following command needs to be run on the template prior to leveraging
+```
+winrm set winrm/config/service/auth @{Basic="true"}
+```
+
 ## Contribute
  - Fork it
  - Create your feature branch (git checkout -b my-new-feature)

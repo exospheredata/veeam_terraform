@@ -70,10 +70,10 @@ proxy_count            = 0
 # Chef Configuration
 
 # Full URL from which the Veeam software will be downloaded.
-veeam_installation_url = "https://download.veeam.com/VeeamBackup&Replication_9.5.0.1922.Update3a.iso"
+veeam_installation_url = "https://download.veeam.com/VeeamBackup&Replication_9.5.4.2615.Update4.iso"
 
 # SHA256 Checksum for the ISO Url selected.
-veeam_installation_checksum = "9a6fa7d857396c058b2e65f20968de56f96bc293e0e8fd9f1a848c7d71534134"
+veeam_installation_checksum = "ecc27bbcf49104861566782701dca42375b324b4710e2fa79b5f8068c31c4494"
 
 
 
