@@ -53,7 +53,7 @@ try {
 }
 try {
   Write-Host "Start the CHEF Client and configuration bootstrap"
-  Invoke-Expression -Command "C:\opscode\chef\embedded\bin\chef-solo.bat --recipe-url /tmp/cookbooks.tar.gz -c C:/chef/solo.rb -j C:/chef/dna.json -l info"
+  Invoke-Expression -Command "C:\opscode\chef\embedded\bin\chef-solo.bat --recipe-url /tmp/cookbooks.tar.gz -c C:/chef/solo.rb -j C:/chef/dna.json -l info -L C:/chef/client.log"
   if($LASTEXITCODE -ne 0) {
     # This will allow the logs to finish writing to the screen before we fail out.
     Start-Sleep -s 5
